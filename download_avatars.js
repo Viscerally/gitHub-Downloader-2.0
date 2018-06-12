@@ -9,12 +9,15 @@ function getRepoContributors(repoOwner, repoName, cb) {
     url: "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors",
     headers: {
       'User-Agent': 'request'
-    }
+      'Authorization': token
+    },
+    json: true
   };
 
 
-  request(url, function(err, res, body) {
+  request.get(options, function(err, res, body) {
     cb(err, body);
+
   });
 }
 
